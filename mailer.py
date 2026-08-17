@@ -85,6 +85,7 @@ def send_jobless_people_hope():
 if __name__ == "__main__" :
     uvicorn.run(
         "mailer:app",
-        port=8000
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000))
     )
 
