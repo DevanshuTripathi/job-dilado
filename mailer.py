@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from models import Job
+from amazon import get_amazon_jobs
+from greenhouse import get_greenhouse_jobs
 
 load_dotenv()
 
@@ -13,7 +16,25 @@ SENDER_APP_PASS = os.environ.get("APP_PASS")
 
 RECIPIENT_MAILS = ["devanshutripathi2005@gmail.com"]
 
+def get_all_jobs() :
+    all_jobs: list[Job] = []
+
+    for j in get_amazon_jobs() :
+        all_jobs.append(j)
+
+    for j in get_greenhouse_jobs() :
+        all_jobs.append(j)
+
+    return all_jobs
+
 def send_jobless_people_hope():
+
+    hope_for_nalle_people = get_all_jobs()
+
+    formatted_jobs = "\n\n".join(
+        f"Company: {job.company}\nRole: {job.job}\nApply Link: {job.apply_url}"
+        for job in hope_for_nalle_people
+    )
 
     for unemployed in RECIPIENT_MAILS :
 
@@ -22,9 +43,14 @@ def send_jobless_people_hope():
 
         message["From"] = SENDER_EMAIL
         message["To"] = unemployed
-        message["Subject"] = "YE LE BSDK"
+        message["Subject"] = "Hope!!!"
 
-        body = "Aaj omlette nahi tehelka omlette banaunga!"
+        body = ";-; No Jobs for today, Sorry!!"
+
+        # body = "Aaj omlette nahi tehelka omlette banaunga!"
+        if formatted_jobs :
+            body = f"MAUJ KAR AB \n\n{formatted_jobs}"
+
         message.attach(MIMEText(body, "plain"))
 
         try :
