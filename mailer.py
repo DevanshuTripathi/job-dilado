@@ -7,6 +7,11 @@ from models import Job
 from amazon import get_amazon_jobs
 from greenhouse import get_greenhouse_jobs
 
+from fastapi import FastAPI
+import uvicorn
+
+app = FastAPI()
+
 load_dotenv()
 
 SMTP_SERVER = "smtp.gmail.com"
@@ -27,6 +32,7 @@ def get_all_jobs() :
 
     return all_jobs
 
+@app.get("/api/send-them-mails")
 def send_jobless_people_hope():
 
     hope_for_nalle_people = get_all_jobs()
@@ -65,10 +71,20 @@ def send_jobless_people_hope():
 
         except Exception as e :
             print(f"An error occured: {e}")
+            return {
+                "error": e
+            }
 
         finally :
             server.quit()
 
+    return {
+        "message": "success!"
+    }
+
 if __name__ == "__main__" :
-    send_jobless_people_hope()
+    uvicorn.run(
+        "mailer:app",
+        port=8000
+    )
 
