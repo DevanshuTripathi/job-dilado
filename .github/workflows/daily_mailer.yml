@@ -2,7 +2,7 @@ name: Daily Job Mailer
 
 on:
   schedule:
-    - cron: '20 15 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch: # Manual Trigger
 
 jobs:
