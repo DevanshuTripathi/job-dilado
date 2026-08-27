@@ -29,7 +29,7 @@ def is_fresher_job(job) :
     title = job.get("title", "").lower() 
     basic_qualification = job.get("basic_qualifications", "").lower()
 
-    return is_global_fresher_job(title + " " + basic_qualification)
+    return is_global_fresher_job(title, basic_qualification)
 
 def is_software_job(job) :
     title = job.get("title", "").lower()
@@ -52,7 +52,7 @@ def parse_jobs_to_model(jobs) :
         model_job.job_hash = hash_dig
 
         amazon_jobs.append(model_job)
-
+    print("AMAZON JOBS DONE")
     return amazon_jobs
 
 def get_amazon_jobs(params = params) :
