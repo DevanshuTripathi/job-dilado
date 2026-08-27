@@ -21,12 +21,12 @@ SEEN_JOBS_FILE = "seen_jobs.json"
 
 RECIPIENT_MAILS = [
     "devanshutripathi2005@gmail.com",
-    # "sakshambajpai.1604@gmail.com",
-    # "manpuriadevdhar95@gmail.com",
-    # "tanishaagarwala2510@gmail.com",
-    # "saketruia18@gmail.com",
-    # "armaanitsingh6@gmail.com",
-    # "preetgupta0423@gmail.com",
+    "sakshambajpai.1604@gmail.com",
+    "manpuriadevdhar95@gmail.com",
+    "tanishaagarwala2510@gmail.com",
+    "saketruia18@gmail.com",
+    "armaanitsingh6@gmail.com",
+    "preetgupta0423@gmail.com",
     "adityamukherjee1972@gmail.com",
 ]
 
