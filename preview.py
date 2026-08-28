@@ -6,6 +6,7 @@ from amazon import get_amazon_jobs
 from greenhouse import get_greenhouse_jobs
 from ashby import get_ashby_jobs
 from atlassian import get_atlassian_jobs
+from google import get_google_jobs
 
 
 def preview():
@@ -17,10 +18,18 @@ def preview():
     parser.add_argument("--amazon", action="store_true", help="Fetch amazon jobs")
     parser.add_argument("--ashby", action="store_true", help="Fetch ashby jobs")
     parser.add_argument("--atlassian", action="store_true", help="Fetch atlassian jobs")
+    parser.add_argument("--google", action="store_true", help="Fetch google jobs")
 
     args = parser.parse_args()
 
-    if args.lever or args.amazon or args.greenhouse or args.ashby or args.atlassian:
+    if (
+        args.lever
+        or args.amazon
+        or args.greenhouse
+        or args.ashby
+        or args.atlassian
+        or args.google
+    ):
         hope_for_nalle_people = []
         if args.lever:
             hope_for_nalle_people.extend(get_lever_jobs())
@@ -32,6 +41,8 @@ def preview():
             hope_for_nalle_people.extend(get_ashby_jobs())
         if args.atlassian:
             hope_for_nalle_people.extend(get_atlassian_jobs())
+        if args.google:
+            hope_for_nalle_people.extend(get_google_jobs())
     else:
         hope_for_nalle_people = get_all_jobs()
 
