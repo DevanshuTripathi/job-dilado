@@ -1,8 +1,8 @@
 name: Daily Job Mailer
 
 on:
-  schedule:
-    - cron: '37 8 * * *'
+  # schedule:
+  #   - cron: '37 8 * * *'
   workflow_dispatch: # Manual Trigger
   repository_dispatch:
     types: [run-mailer-event]

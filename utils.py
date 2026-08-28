@@ -3,7 +3,7 @@ import re
 SENIOR_TITLE_PATTERN = r"\b(senior|sr|lead|manager|head|principal|staff|director|vp|avp|executive|tl|sse|architect|ii|iii|iv|2|3|4|l5|l6)\b"
 # EXPLICIT_SENIOR_EXP = r"\b([2-9]|\d{2})\s*(\+|\-|to)?\s*years?\b"
 EXPLICIT_SENIOR_EXP = r"\b([2-9]|\d{2})(?:\s*[\-–+]\s*\d+)?\+?\s*years?\b(?:\s+of)?(?:\s+[\w\-]+){0,7}\s+(?:exp|experience|working)\b"
-ENTRY_PATTERN = r"\b(0|1|0-1|0-2)\s*(?:-\s*\d+)?\s*years?\b|\b(fresher|entry[- ]level|intern|internship|graduate|trainee|associate sde|sde[- ]?1|sde[- ]?i)\b"
+ENTRY_PATTERN = r"\b(0|0-1|0-2)\s*(?:-\s*\d+)?\s*years?\b|\b(fresher|entry[- ]level|intern|internship|graduate|trainee|associate sde|sde[- ]?1|sde[- ]?i)\b"
 
 
 EXPLICIT_SENIOR_EXP = re.compile(EXPLICIT_SENIOR_EXP, re.IGNORECASE | re.VERBOSE)
