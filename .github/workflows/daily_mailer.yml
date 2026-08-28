@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '37 8 * * *'
   workflow_dispatch: # Manual Trigger
+  repository_dispatch:
+    types: [run-mailer-event]
 
 jobs:
   run-mailer:
