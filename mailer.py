@@ -28,6 +28,7 @@ RECIPIENT_MAILS = [
     "armaanitsingh6@gmail.com",
     "preetgupta0423@gmail.com",
     "adityamukherjee1972@gmail.com",
+    "mayankthawani13@gmail.com"
 ]
 
 
