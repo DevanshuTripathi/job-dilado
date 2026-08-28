@@ -9,6 +9,7 @@ from greenhouse import get_greenhouse_jobs
 from lever import get_lever_jobs
 from ashby import get_ashby_jobs
 from atlassian import get_atlassian_jobs
+from google import get_google_jobs
 import json
 
 load_dotenv()
@@ -29,7 +30,7 @@ RECIPIENT_MAILS = [
     "armaanitsingh6@gmail.com",
     "preetgupta0423@gmail.com",
     "adityamukherjee1972@gmail.com",
-    "mayankthawani13@gmail.com"
+    "mayankthawani13@gmail.com",
 ]
 
 
@@ -43,6 +44,7 @@ def load_seen_hashes():
             print(f"Error reading {SEEN_JOBS_FILE}: {e}")
             return set()
     return set()
+
 
 def save_seen_hashes(seen_hashes: set):
     try:
@@ -66,8 +68,11 @@ def get_all_jobs():
 
     for j in get_ashby_jobs():
         all_jobs.append(j)
-    
+
     for j in get_atlassian_jobs():
+        all_jobs.append(j)
+
+    for j in get_google_jobs():
         all_jobs.append(j)
 
     print("ALL JOBS DONE")
@@ -80,8 +85,9 @@ def send_jobless_people_hope():
     hope_for_nalle_people = get_all_jobs()
 
     new_jobs = [
-        job for job in hope_for_nalle_people 
-        if hasattr(job, 'job_hash') and job.job_hash and job.job_hash not in seen_hashes
+        job
+        for job in hope_for_nalle_people
+        if hasattr(job, "job_hash") and job.job_hash and job.job_hash not in seen_hashes
     ]
 
     if not new_jobs:
@@ -125,7 +131,7 @@ def send_jobless_people_hope():
 
         finally:
             server.quit()
-            
+
     for job in new_jobs:
         seen_hashes.add(job.job_hash)
 
