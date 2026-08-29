@@ -12,6 +12,7 @@ from atlassian import get_atlassian_jobs
 from google import get_google_jobs
 from amazon_service_jobs import get_amazon_service_jobs
 import json
+from utils import load_seen_hashes
 
 load_dotenv()
 
@@ -35,16 +36,16 @@ RECIPIENT_MAILS = [
 ]
 
 
-def load_seen_hashes():
-    if os.path.exists(SEEN_JOBS_FILE):
-        try:
-            with open(SEEN_JOBS_FILE, "r") as f:
-                data = json.load(f)
-                return set(data)
-        except Exception as e:
-            print(f"Error reading {SEEN_JOBS_FILE}: {e}")
-            return set()
-    return set()
+# def load_seen_hashes():
+#     if os.path.exists(SEEN_JOBS_FILE):
+#         try:
+#             with open(SEEN_JOBS_FILE, "r") as f:
+#                 data = json.load(f)
+#                 return set(data)
+#         except Exception as e:
+#             print(f"Error reading {SEEN_JOBS_FILE}: {e}")
+#             return set()
+#     return set()
 
 
 def save_seen_hashes(seen_hashes: set):

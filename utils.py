@@ -1,6 +1,10 @@
 import re
 from models import Job
 import hashlib
+import os
+import json
+
+SEEN_JOBS_FILE = "seen_jobs.json"
 
 SENIOR_TITLE_PATTERN = r"\b(senior|sr|lead|manager|head|principal|staff|director|vp|avp|executive|tl|sse|architect|ii|iii|iv|2|3|4|l5|l6)\b"
 # EXPLICIT_SENIOR_EXP = r"\b([2-9]|\d{2})\s*(\+|\-|to)?\s*years?\b"
@@ -45,17 +49,31 @@ def is_global_fresher_job(title: str, description: str = "") -> bool:
 def is_global_software_job(context):
     return bool(re.search(SOFTWARE_PATTERN, safe_str(context)))
 
+
 def is_global_india_job(context):
     return bool(re.search(LOCATION_PATTERN, safe_str(context)))
 
-def create_model_job(company, job, apply_url) :
+
+def create_model_job(company, job, apply_url):
     model_job = Job(company=company, job=job, apply_url=apply_url, job_hash="")
-    
+
     job_text = model_job.company + model_job.job + model_job.apply_url
-            
+
     hash_object = hashlib.sha256(job_text.encode())
     hash_dig = hash_object.hexdigest()
 
     model_job.job_hash = hash_dig
-    
+
     return model_job
+
+
+def load_seen_hashes():
+    if os.path.exists(SEEN_JOBS_FILE):
+        try:
+            with open(SEEN_JOBS_FILE, "r") as f:
+                data = json.load(f)
+                return set(data)
+        except Exception as e:
+            print(f"Error reading {SEEN_JOBS_FILE}: {e}")
+            return set()
+    return set()

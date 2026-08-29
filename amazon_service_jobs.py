@@ -1,8 +1,7 @@
 import requests
-from mailer import load_seen_hashes
 from typing import List
 from models import Job
-from utils import create_model_job
+from utils import create_model_job, load_seen_hashes
 
 def get_amazon_service_jobs() :
     amzs_jobs: List[Job] = []
