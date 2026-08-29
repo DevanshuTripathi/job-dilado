@@ -2,7 +2,7 @@ import requests
 import re
 from models import Job
 import hashlib
-from utils import is_global_fresher_job, is_global_software_job
+from utils import is_global_fresher_job, is_global_software_job, create_model_job
 
 url = "https://amazon.jobs/en/search.json"
 
@@ -44,12 +44,7 @@ def parse_jobs_to_model(jobs) :
     for job in jobs :
         model_job = Job(company="Amazon", job=job["title"], apply_url=job["url_next_step"], job_hash="")
 
-        job_text = model_job.company + model_job.job + model_job.apply_url
-
-        hash_object = hashlib.sha256(job_text.encode())
-        hash_dig = hash_object.hexdigest()
-
-        model_job.job_hash = hash_dig
+        model_job = create_model_job("Amazon", job["title"], job["url_next_step"])
 
         amazon_jobs.append(model_job)
     print("AMAZON JOBS DONE")

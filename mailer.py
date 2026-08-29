@@ -10,6 +10,7 @@ from lever import get_lever_jobs
 from ashby import get_ashby_jobs
 from atlassian import get_atlassian_jobs
 from google import get_google_jobs
+from amazon_service_jobs import get_amazon_service_jobs
 import json
 
 load_dotenv()
@@ -73,6 +74,9 @@ def get_all_jobs():
         all_jobs.append(j)
 
     for j in get_google_jobs():
+        all_jobs.append(j)
+        
+    for j in get_amazon_service_jobs():
         all_jobs.append(j)
 
     print("ALL JOBS DONE")
