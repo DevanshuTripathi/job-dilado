@@ -14,7 +14,7 @@ apply_url: applyUrl
 LEVER_COMPANIES = [
     'meesho', 'mindtickle', 'paytm', 'drivetrain', 'doxel', 'entrata',
     'peoplegrove', 'netomi', 'binance', 'entrata', 'spreetail',
-    'nium', 'shyftlabs'
+    'nium', 'shyftlabs', 'hevodata'
 ]
 
 def get_base_url(company) :
