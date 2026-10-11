@@ -15,7 +15,7 @@ GH_COMPANIES = [
     'stripe', 'cloudflare', 'twilio', 'atlassian', 'datadog', 'rubrik', 
     'coinbase', 'canva', 'airbnb', 'razorpay', 'meesho', 'nirmata',
     'enterpret', 'groww', 'ethoslife', 'commercelq', 'amtechsoftware',
-    'yipitdata', 'applovin', 'motive'
+    'yipitdata', 'applovin', 'motive', 'hackerrank'
 ]
 
 # GreenHouse Base URL for job board
