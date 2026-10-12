@@ -33,6 +33,7 @@ RECIPIENT_MAILS = [
     "preetgupta0423@gmail.com",
     "adityamukherjee1972@gmail.com",
     "mayankthawani13@gmail.com",
+    "patildhanay7@gmail.com",
 ]
 
 
