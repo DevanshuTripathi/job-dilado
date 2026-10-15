@@ -72,14 +72,14 @@ def get_all_jobs():
     for j in get_ashby_jobs():
         all_jobs.append(j)
 
-    for j in get_atlassian_jobs():
-        all_jobs.append(j)
+    # for j in get_atlassian_jobs():
+    #     all_jobs.append(j)
 
-    for j in get_google_jobs():
-        all_jobs.append(j)
+    # for j in get_google_jobs():
+    #     all_jobs.append(j)
         
-    for j in get_amazon_service_jobs():
-        all_jobs.append(j)
+    # for j in get_amazon_service_jobs():
+    #     all_jobs.append(j)
 
     print("ALL JOBS DONE")
     return all_jobs
